@@ -1,0 +1,85 @@
+﻿@import "../css/base.scss";
+$baseColor: #fcffb4;
+$viewW: 750px;
+$bgColor: #f1ebcb;
+$color: #fffb88;
+
+.zmiti-main-main-ui{
+	background: $bgColor;
+	//
+	width: $viewW;
+	
+	&>canvas{
+		@include pos(a);
+		left: 0;
+		top: 0;
+
+	}
+
+	.zmiti-building-C{
+		background: #e8e8e8;
+		width: 100%;
+		&>div>section{
+			@include displayBox(horizontal);
+			-webkit-box-pack:start;
+			//-webkit-box-align:start;
+		}
+
+		&>div{
+			height: 220px;
+		}
+
+		.zmiti-build-bar{
+			height: 80px;
+			background: #fff;
+			@include displayBox(horizontal);
+			&>div{
+				-webkit-box-flex:1;
+				text-align: center;
+				height: 100%;
+				line-height: 80px;
+				&.active{
+					background: #e8e8e8;
+				}
+
+				&:last-of-type{
+					@include pos(r);
+					top:-62px;
+					span{
+						@include pos(a);
+						width: 100%;
+						z-index: 10;
+						left: 0;
+						bottom: -62px;
+						color:#7f6464;
+
+					}
+				}
+			}
+		}
+
+		@include pos(a);
+		left: 0;
+		bottom: 0;
+		.zmiti-build{
+			width: 220px;
+			text-align: center;
+			height: 220px;
+		}
+		img{
+			//height: 100%;
+			width: auto;
+
+		}
+	}
+
+	.zmiti-target{
+		@include pos(f);
+
+	}
+}
+
+
+
+
+ 

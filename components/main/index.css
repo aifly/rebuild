@@ -1,0 +1,85 @@
+.lt-full {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+.zmiti-text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis; }
+
+.zmiti-play {
+  width: .8rem;
+  height: .8rem;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 1000;
+  right: .5rem;
+  top: .5rem; }
+  .zmiti-play.rotate {
+    -webkit-animation: rotate 5s linear infinite;
+    animation: rotate 5s linear infinite; }
+
+@-webkit-keyframes rotate {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+.zmiti-main-main-ui {
+  background: #f1ebcb;
+  width: 750px; }
+  .zmiti-main-main-ui > canvas {
+    position: absolute;
+    left: 0;
+    top: 0; }
+  .zmiti-main-main-ui .zmiti-building-C {
+    background: #e8e8e8;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0; }
+    .zmiti-main-main-ui .zmiti-building-C > div > section {
+      display: -webkit-box;
+      -webkit-box-align: center;
+      -webkit-box-pack: center;
+      -webkit-box-orient: horizontal;
+      -webkit-box-pack: start; }
+    .zmiti-main-main-ui .zmiti-building-C > div {
+      height: 220px; }
+    .zmiti-main-main-ui .zmiti-building-C .zmiti-build-bar {
+      height: 80px;
+      background: #fff;
+      display: -webkit-box;
+      -webkit-box-align: center;
+      -webkit-box-pack: center;
+      -webkit-box-orient: horizontal; }
+      .zmiti-main-main-ui .zmiti-building-C .zmiti-build-bar > div {
+        -webkit-box-flex: 1;
+        text-align: center;
+        height: 100%;
+        line-height: 80px; }
+        .zmiti-main-main-ui .zmiti-building-C .zmiti-build-bar > div.active {
+          background: #e8e8e8; }
+        .zmiti-main-main-ui .zmiti-building-C .zmiti-build-bar > div:last-of-type {
+          position: relative;
+          top: -62px; }
+          .zmiti-main-main-ui .zmiti-building-C .zmiti-build-bar > div:last-of-type span {
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+            left: 0;
+            bottom: -62px;
+            color: #7f6464; }
+    .zmiti-main-main-ui .zmiti-building-C .zmiti-build {
+      width: 220px;
+      text-align: center;
+      height: 220px; }
+    .zmiti-main-main-ui .zmiti-building-C img {
+      width: auto; }
+  .zmiti-main-main-ui .zmiti-target {
+    position: fixed; }
+
+/*# sourceMappingURL=index.css.map */
