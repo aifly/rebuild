@@ -3,83 +3,102 @@ $baseColor: #fcffb4;
 $viewW: 750px;
 $bgColor: #f1ebcb;
 $color: #fffb88;
-
-.zmiti-main-main-ui{
-	background: $bgColor;
-	//
-	width: $viewW;
-	
-	&>canvas{
+.zmiti-main-main-ui {
+    background: $bgColor; //
+    width: $viewW;
+    &>canvas {
+        @include pos(a);
+        left: 0;
+        top: 0;
+    }
+    .zmiti-building-C {
+        background: #e8e8e8;
+        width: 100%;
+        z-index: 101;
+        &>div>section {
+            @include displayBox(horizontal);
+            -webkit-box-pack: start; //-webkit-box-align:start;
+        }
+        &>div {
+            height: 220px;
+        }
+        .zmiti-build-bar {
+            height: 80px;
+            background: #fff;
+            @include displayBox(horizontal);
+            &>div {
+                -webkit-box-flex: 1;
+                text-align: center;
+                height: 100%;
+                line-height: 80px;
+                &.active {
+                    background: #e8e8e8;
+                }
+                &:last-of-type {
+                    @include pos(r);
+                    top: -62px;
+                    span {
+                        @include pos(a);
+                        width: 100%;
+                        z-index: 10;
+                        left: 0;
+                        bottom: -62px;
+                        color: #7f6464;
+                    }
+                }
+            }
+        }
+        @include pos(a);
+        left: 0;
+        bottom: 0;
+        .zmiti-build {
+            width: 220px;
+            text-align: center;
+            height: 220px;
+        }
+        img {
+            //height: 100%;
+            width: auto;
+            color: #fff;
+        }
+    }
+    .zmiti-target {
+        @include pos(f);
+    }
+    .zmiti-trash {
 		@include pos(a);
-		left: 0;
-		top: 0;
+		width: 250px;
+		height: 250px;
+		background:#76756c;
+		@include br();
+		bottom: 175px;
+		left: -125px;
+		z-index:100;
+		color:#fff;
+		
 
-	}
-
-	.zmiti-building-C{
-		background: #e8e8e8;
-		width: 100%;
-		&>div>section{
-			@include displayBox(horizontal);
-			-webkit-box-pack:start;
-			//-webkit-box-align:start;
+		&.trash-enter-active, &.trash-leave-active {
+			@include transition(.4s);
 		}
 
-		&>div{
-			height: 220px;
+		&.trash-enter, &.trash-leave-to {
+			opacity:0;
 		}
 
-		.zmiti-build-bar{
-			height: 80px;
-			background: #fff;
-			@include displayBox(horizontal);
-			&>div{
-				-webkit-box-flex:1;
-				text-align: center;
-				height: 100%;
-				line-height: 80px;
-				&.active{
-					background: #e8e8e8;
-				}
 
-				&:last-of-type{
-					@include pos(r);
-					top:-62px;
-					span{
-						@include pos(a);
-						width: 100%;
-						z-index: 10;
-						left: 0;
-						bottom: -62px;
-						color:#7f6464;
+        img{
+            width:40px;
+            margin-left: 150px;
+            margin-top: 20px;
 
-					}
-				}
-			}
-		}
-
-		@include pos(a);
-		left: 0;
-		bottom: 0;
-		.zmiti-build{
-			width: 220px;
-			text-align: center;
-			height: 220px;
-		}
-		img{
-			//height: 100%;
-			width: auto;
-
-		}
-	}
-
-	.zmiti-target{
-		@include pos(f);
-
+        }
+        span{
+			@include pos(a);
+			bottom: 52%;
+			left: 50%;
+			width: 50%;
+			margin-left: 20px;
+        }
+		
 	}
 }
-
-
-
-
- 

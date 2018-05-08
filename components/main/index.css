@@ -38,6 +38,7 @@
   .zmiti-main-main-ui .zmiti-building-C {
     background: #e8e8e8;
     width: 100%;
+    z-index: 101;
     position: absolute;
     left: 0;
     bottom: 0; }
@@ -78,8 +79,34 @@
       text-align: center;
       height: 220px; }
     .zmiti-main-main-ui .zmiti-building-C img {
-      width: auto; }
+      width: auto;
+      color: #fff; }
   .zmiti-main-main-ui .zmiti-target {
     position: fixed; }
+  .zmiti-main-main-ui .zmiti-trash {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: #76756c;
+    border-radius: 50%;
+    bottom: 175px;
+    left: -125px;
+    z-index: 100;
+    color: #fff; }
+    .zmiti-main-main-ui .zmiti-trash.trash-enter-active, .zmiti-main-main-ui .zmiti-trash.trash-leave-active {
+      -webkit-transition: 0.4s;
+      transition: 0.4s; }
+    .zmiti-main-main-ui .zmiti-trash.trash-enter, .zmiti-main-main-ui .zmiti-trash.trash-leave-to {
+      opacity: 0; }
+    .zmiti-main-main-ui .zmiti-trash img {
+      width: 40px;
+      margin-left: 150px;
+      margin-top: 20px; }
+    .zmiti-main-main-ui .zmiti-trash span {
+      position: absolute;
+      bottom: 52%;
+      left: 50%;
+      width: 50%;
+      margin-left: 20px; }
 
 /*# sourceMappingURL=index.css.map */
