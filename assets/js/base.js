@@ -58,7 +58,7 @@
     index: './assets/images/index.png',
     index1: './assets/images/index1.png',
     index2: './assets/images/index.jpg',
-    cover: './assets/images/cover.png',
+    cover: './assets/images/cover1.png',
 
     copyright: './assets/images/copyright.jpg',
     photo: './assets/images/photo.png',

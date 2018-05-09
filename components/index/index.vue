@@ -11,7 +11,7 @@
 				<img :src="index" alt="" @touchstart='imgStart($event)'>
 			</div>
 
-			<div v-tap='[entry]' class="zmiti-entry" :class="{'active':press}" @touchstart='press = true' @touchend='press=false'>
+			<div v-if='hideCover' v-tap='[entry]' class="zmiti-entry" :class="{'active':press}" @touchstart='press = true' @touchend='press=false'>
 				去建造
 			</div>
 

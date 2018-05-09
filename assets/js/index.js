@@ -11987,7 +11987,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "F:\\xuchang2018\\project\\rebuild\\components\\index\\index.vue"
+	  var id = "E:\\project\\rebuild\\components\\index\\index.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -12012,7 +12012,7 @@
 	// 				<img :src="index" alt="" @touchstart='imgStart($event)'>
 	// 			</div>
 	//
-	// 			<div v-tap='[entry]' class="zmiti-entry" :class="{'active':press}" @touchstart='press = true' @touchend='press=false'>
+	// 			<div v-if='hideCover' v-tap='[entry]' class="zmiti-entry" :class="{'active':press}" @touchstart='press = true' @touchend='press=false'>
 	// 				去建造
 	// 			</div>
 	//
@@ -22219,7 +22219,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "F:\\xuchang2018\\project\\rebuild\\components\\toast\\toast.vue"
+	  var id = "E:\\project\\rebuild\\components\\toast\\toast.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -22243,8 +22243,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0255c04e&file=toast.vue!../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./toast.vue", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0255c04e&file=toast.vue!../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./toast.vue");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-39571a79&file=toast.vue!../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./toast.vue", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-39571a79&file=toast.vue!../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./toast.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -22389,7 +22389,7 @@
 /* 22 */
 /***/ (function(module, exports) {
 
-	module.exports = "\r\n\t<transition name='index'>\r\n\t\t<div   class=\"lt-full zmiti-index-main-ui \" :style=\"{background: 'url('+imgs.index2+') no-repeat right bottom',backgroundSize:'cover'}\"  v-if='show'>\r\n\r\n\t\t\t<div class=\"zmiti-cover lt-full\" :class=\"{'hide':hideCover}\" >\r\n\t\t\t\t<div>\r\n\t\t\t\t\t<img :src=\"imgs.cover\" alt=\"\" @touchstart='imgStart($event)'>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"zmiti-title\">\r\n\t\t\t\t<img :src=\"index\" alt=\"\" @touchstart='imgStart($event)'>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-tap='[entry]' class=\"zmiti-entry\" :class=\"{'active':press}\" @touchstart='press = true' @touchend='press=false'>\r\n\t\t\t\t去建造\r\n\t\t\t</div>\r\n\r\n\t\t</div>\r\n\t</transition>\r\n";
+	module.exports = "\r\n\t<transition name='index'>\r\n\t\t<div   class=\"lt-full zmiti-index-main-ui \" :style=\"{background: 'url('+imgs.index2+') no-repeat right bottom',backgroundSize:'cover'}\"  v-if='show'>\r\n\r\n\t\t\t<div class=\"zmiti-cover lt-full\" :class=\"{'hide':hideCover}\" >\r\n\t\t\t\t<div>\r\n\t\t\t\t\t<img :src=\"imgs.cover\" alt=\"\" @touchstart='imgStart($event)'>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"zmiti-title\">\r\n\t\t\t\t<img :src=\"index\" alt=\"\" @touchstart='imgStart($event)'>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if='hideCover' v-tap='[entry]' class=\"zmiti-entry\" :class=\"{'active':press}\" @touchstart='press = true' @touchend='press=false'>\r\n\t\t\t\t去建造\r\n\t\t\t</div>\r\n\r\n\t\t</div>\r\n\t</transition>\r\n";
 
 /***/ }),
 /* 23 */
@@ -22405,7 +22405,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "F:\\xuchang2018\\project\\rebuild\\components\\main\\index.vue"
+	  var id = "E:\\project\\rebuild\\components\\main\\index.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -25055,7 +25055,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "F:\\xuchang2018\\project\\rebuild\\components\\music\\index.vue"
+	  var id = "E:\\project\\rebuild\\components\\music\\index.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
