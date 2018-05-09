@@ -22,6 +22,8 @@
     house14: './assets/images/house14.png',
     house15: './assets/images/house15.png',
     house16: './assets/images/house16.png',
+    house17: './assets/images/house17.png',
+    house18: './assets/images/house18.png',
 
 
     car1: './assets/images/car1.png',
@@ -38,6 +40,11 @@
     road1: './assets/images/road1.png',
     road2: './assets/images/road2.png',
     road3: './assets/images/road3.png',
+    road4: './assets/images/road4.png',
+    road5: './assets/images/road5.png',
+    road6: './assets/images/road6.png',
+    road7: './assets/images/road7.png',
+
     trash: './assets/images/trash.png',
     subtitle: './assets/images/subtitle.png',
     title:'./assets/images/title.gif',
@@ -48,7 +55,12 @@
     grass1: './assets/images/grass1.png',
     grass2: './assets/images/grass2.png',
     grass3: './assets/images/grass3.png',
+    index: './assets/images/index.png',
+    index1: './assets/images/index1.png',
+    index2: './assets/images/index.jpg',
+    cover: './assets/images/cover.png',
 
+    copyright: './assets/images/copyright.jpg',
     photo: './assets/images/photo.png',
     housebar: './assets/images/house-bar.png',
     carbar: './assets/images/car-bar.png',
@@ -79,4 +91,24 @@ var musics = {
         name: "photo",
         loop: false
     }
-}
+};
+
+(function() {
+   if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+       handleFontSize();
+   } else {
+       if (document.addEventListener) {
+           document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
+       } else if (document.attachEvent) {
+           document.attachEvent("WeixinJSBridgeReady", handleFontSize);
+           document.attachEvent("onWeixinJSBridgeReady", handleFontSize);  }
+   }
+   function handleFontSize() {
+       // 设置网页字体为默认大小
+       WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize' : 0 });
+       // 重写设置网页字体大小的事件
+       WeixinJSBridge.on('menu:setfont', function() {
+           WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize' : 0 });
+       });
+   }
+})();

@@ -8,6 +8,7 @@ class Build{
 		this.groups = option.groups;
 		this.index = option.index;
 		this.lastBuild = option.lastBuild;
+		this.lastRoad = option.lastRoad;
 		this.obserable = option.obserable;
 		this.render();
 		this.bindEvent();
@@ -35,14 +36,23 @@ class Build{
 				this.stage.addChild(bitmap);
 			break;
 			case 1:
-			case 2:
 				if(this.lastBuild){
-					console.log(this.stage.getChildIndex(this.lastBuild))
 					this.stage.addChildAt(bitmap,this.stage.getChildIndex(this.lastBuild));	
 				}else{
 					this.stage.addChild(bitmap);	
 				}
-				
+			break;
+			case 2:
+				if(this.lastBuild){
+					var obj = this.lastBuild;
+					if(this.lastRoad){
+						obj = this.lastRoad;
+					}
+					
+					this.stage.addChildAt(bitmap,this.groups[this.index].length);	
+				}else{
+					this.stage.addChild(bitmap);	
+				}
 			break;
 		}
 		/*if(this.groups[1].length){
@@ -77,7 +87,7 @@ class Build{
     		image.x = e.stageX - oldX;
         	image.y = e.stageY - oldY;
 
-            stage.update();
+            //stage.update();
 
         });
 
@@ -99,7 +109,7 @@ class Build{
             			type:'showBg'
             		})
             	}
-            	stage.update();
+            	//stage.update();
             }
         })
 	}

@@ -102,7 +102,7 @@ new Vue({
 				url: window.protocol + '//api.zmiti.com/v2/custom/update_pvnum/',
 				type: 'post',
 				data: {
-					customid: 51
+					customid: 57
 				}
 			}).done((data) => {
 				if (data.getret === 0) {

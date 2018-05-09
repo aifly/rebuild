@@ -6,15 +6,78 @@ $color: #fffb88;
 .zmiti-main-main-ui {
     background: $bgColor; //
     width: $viewW;
+
+    z-index: -1;
+    opacity:0;
+    &.show{
+    	z-index: 10;
+    	opacity: 1;
+    }
     &>canvas {
         @include pos(a);
         left: 0;
         top: 0;
     }
+
+	
+	.zmiti-createimg {
+		//border: 6px solid $color;
+		box-sizing: border-box;
+		@include pos(a);
+		z-index: 10;
+		height: 80/.84vh;
+		//left: 50%;
+		@include transform(scale(.82));
+		@include transformOrigin(center 20vh);
+		//border: 1px solid #000;
+
+		img {
+			//@include transform(scale(.95, .97));
+			width: auto;
+			height: 100%;
+		}
+
+		&.zmiti-scale-enter-active, &.zmiti-scale-leave-active {
+			@include transition(.4s);
+		}
+
+		&.zmiti-scale-enter, &.zmiti-scale-leave-to {
+			@include transform(scale(1));
+		}
+
+		&:before{
+			content:'';
+			@include pos(a);
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			box-shadow: 0 0 1px 10px #718449;
+		}
+
+		&:after {
+			content: '长按保存图片';
+			@include pos(a);
+			color: #718449;
+			font-size: .4rem;
+			bottom: 0rem;
+			width: .4rem;
+			left: 102%;
+
+		}
+	}
+	
+
+
+
     .zmiti-building-C {
         background: #e8e8e8;
         width: 100%;
         z-index: 101;
+        &.hide{
+        	@include transition(.4s);
+        	@include transform(translate3d(0,350px,0));
+        }
         &>div>section {
             @include displayBox(horizontal);
             -webkit-box-pack: start; //-webkit-box-align:start;
@@ -44,6 +107,7 @@ $color: #fffb88;
                         left: 0;
                         bottom: -62px;
                         color: #7f6464;
+                        font-size: 26px;
                     }
                 }
             }
@@ -64,6 +128,7 @@ $color: #fffb88;
     }
     .zmiti-target {
         @include pos(f);
+        z-index: 200;
     }
     .zmiti-trash {
 		@include pos(a);
@@ -100,5 +165,70 @@ $color: #fffb88;
 			margin-left: 20px;
         }
 		
+	}
+
+
+	.zmiti-share-btns{
+		&.btn-enter-active, &.btn-leave-active {
+			@include transition(.4s);
+		}
+
+		&.btn-enter, &.btn-leave-to {
+			
+			opacity:0;
+		}
+		
+
+
+		height: 2.1rem;
+		color:#3a5442;
+		width: 66%;
+		left: 17%;
+		bottom: 0rem;
+		text-align: center;
+		@include pos(a);
+		@include displayBox(horizontal);
+		-webkit-box-pack:justify;
+		&>div{
+			@include transform3d();
+			background: #c4d96f;
+			line-height: .9rem;
+			@include br(40px);
+			width: 2.5rem;
+			font-size: .40rem;
+			@include pos(r);
+			-webkit-user-select:none;
+
+			&.active{
+				&:before,&:after{
+					top: 0;
+				}
+				top: 5px;
+			}
+			&:before,&:after{
+				@include transition(.1s);
+				@include transform(translate3d(0,0,-1px));	
+				content:'';
+				@include pos(a);
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				@include br(40px);
+			}
+			&:before{
+				background: #c6bdb6;
+				top: 10px;
+				z-index: -1;
+
+			}
+			&:after{
+				background: #718449;
+				top:5px;
+				z-index: -1;
+
+			}
+		}
+
 	}
 }

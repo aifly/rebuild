@@ -2,15 +2,22 @@
 	<transition name='main'>
 		<div @touchmove='creatingBuild($event)' class="lt-full zmiti-main-main-ui "  :class="{'show':show}" ref='page'>
 			
-			<canvas ref='canvas' :width='viewW' :height='viewH'></canvas>
-			
-			<div class="zmiti-building-C">
+			<canvas v-show='!createImg' ref='canvas' :width='viewW' :height='viewH'></canvas>
+			<transition name="zmiti-scale"
+				@after-enter="afterEnter"
+			 >
+			    <div ref='createimgs'  class="zmiti-createimg"  v-if='createImg'>
+					<img :src="createImg" alt="">
+				</div>
+			</transition>
+
+			<div class="zmiti-building-C" :class="{'hide':beginPhoto}">
 				<section class="zmiti-build-bar">
 					<div v-tap='[tab,0]' :class="{'active':index === 0}"><img :src="imgs.housebar"></div>
 					<div v-tap='[tab,1]' :class="{'active':index === 1}"><img :src="imgs.roadbar"></div>
 					<div v-tap='[tab,2]' :class="{'active':index === 2}"><img :src="imgs.grassbar"></div>
 					<div v-tap='[tab,3]' :class="{'active':index === 3}"><img :src="imgs.carbar"></div>
-					<div>
+					<div v-tap='[photo]'>
 						<img :src="imgs.photo">
 						<span>拍照分享</span>
 					</div>
@@ -18,15 +25,23 @@
 				<div ref='scroll' style="overflow: hidden">
 					<section :style='{width:builingList[index].length*220+"px"}'>
 						<div @touchstart='beginCreate($event)' @touchend="endCreate($event,build)" v-for='build in builingList[index]' class="zmiti-build" :key='build.url' :style="{background:' url('+build.url+') no-repeat center center',backgroundSize:build.size?build.size:'contain'}">
-							<img @touchstart='imgStart($event)' :src="build.url" style="opacity:0;width:100%;height:100%;">
+							<img @touchstart='imgStart($event)' :src="build.url" style="opacity:0;width:100%;height:100%;border:1px solid red">
 						</div>
 					</section>
 				</div>
 			</div>
+			<transition name='btn'>
+				<div class="zmiti-share-btns" v-if='showBtns'>
+					<div v-tap='[restart]' :class="{'active':isrestart}" @touchstart='isrestart = true' @touchend='isrestart=false'>去重建</div>
+			 		<div v-tap='[share]' :class="{'active':isshare}" @touchstart='isshare = true' @touchend='isshare=false'>分享</div>
+		 		</div>
+			</transition>
 			<div class="zmiti-target" v-if='target.src' :style='target.style'>
 				<img :src="target.src">
 			</div>
-		
+			<div class="zmiti-mask" v-if='showMasks' @touchstart='showMasks = false'>
+				<img :src="imgs.arrow" alt="">
+			</div>
 		</div>
 	</transition>
 </template>
@@ -44,13 +59,19 @@
 			return{
 				imgs,
 				showTeam:false,
-				show:true,
+				show:false,
+				showMasks:false,
 				viewW:window.innerWidth,
 				viewH:window.innerHeight,
+				createImg:'',
 				isUp:false,
 				index:2,
 				showTrash:false,
+				isshare:false,
 				count:0,
+				isrestart:false,
+				beginPhoto:false,
+				showBtns:false,
 				target:{
 					src:'',
 					style:{
@@ -82,12 +103,18 @@
 						{url:imgs.house13,scale:1},
 						{url:imgs.house14,scale:2},
 						{url:imgs.house15,scale:2},
-						{url:imgs.house16,scale:2},
+						{url:imgs.house16,scale:1},
+						{url:imgs.house17,scale:1},
+						{url:imgs.house18,scale:1},
 					],
 					[
 						{url:imgs.road1},
 						{url:imgs.road2},
 						{url:imgs.road3},
+						{url:imgs.road4},
+						{url:imgs.road5},
+						{url:imgs.road6},
+						{url:imgs.road7},
 					],
 					[
 						{url:imgs.grass1,scale:1},
@@ -112,6 +139,32 @@
 		},
 		
 		methods:{
+			afterEnter(){
+				this.showBtns = true;
+			},
+			photo(){
+				this.beginPhoto = true;
+				var copyright = new createjs.Bitmap(imgs.copyright);
+				copyright.x = 0;
+				copyright.y = this.viewH - 200;
+
+				
+
+				this.stage.addChild(copyright);
+
+				setTimeout(()=>{
+					this.createImg = this.$refs['canvas'].toDataURL();
+		        	this.showBtns = true;
+				},100)
+			},
+			share(){
+				this.showMasks = true
+			},
+			restart(){
+				setTimeout(()=>{
+					window.location.href = window.location.href.split('?')[0]; 
+				},100)
+			},
 			imgStart(e){
 				e.preventDefault()
 			},
@@ -147,6 +200,7 @@
 				stage.addChild(trash);
 
 
+				
 				var data = {
 			        images: [imgs.subtitle],
 			        framerate: 20,
@@ -159,9 +213,18 @@
 		
 				var animation = new createjs.Sprite(subtitle, "run");
 				animation.name = 'subtitle';
+
 				stage.addChild(animation);
-				createjs.Ticker.timingMode = createjs.Ticker.RAF;
-				createjs.Ticker.addEventListener("tick", stage);
+				var angle = 0;
+				//createjs.Ticker.timingMode = createjs.Ticker.RAF;
+
+				createjs.Ticker.addEventListener("tick", ()=>{
+					angle+=4;
+					angle %= 360;
+					animation.y = Math.sin(angle/180*Math.PI)*10;
+
+					stage.update();
+				});
 				
 				this.trash = trash;
 
@@ -178,6 +241,7 @@
 			},
 			createBuild(option){
 				var {obserable} = this;
+
 				var b = new Build({
 					stage:option.stage,
 					img:option.url,
@@ -187,6 +251,7 @@
 					groups:this.groups,
 					index:this.index,
 					lastBuild:this.lastBuild,
+					lastRoad:this.lastRoad,
 					obserable
 				});
 				this.stage.count = this.stage.count || 0;
@@ -198,23 +263,26 @@
 
 				}
 
-				!this.lastBuild && (this.lastBuild = b.image);
-
+				!this.lastBuild && this.index !== 2 && (this.lastBuild = b.image);
+				if(this.index === 1 && !this.lastRoad){
+					this.lastRoad = b.image;
+				}
 				this.groups[this.index].push(b);
 			},
 			beginCreate(e){
 				var ev = e.changedTouches[0];
 				var startX = ev.pageX,
 					startY = ev.pageY;
-
 				this.startX = startX ;
 				this.startY = startY;
 				this.iNow = 0;
+				//document.title = 'begin drag'
 			},
 			creatingBuild(e){
 				var ev = e.changedTouches[0];
-				if(this.iNow === 0){
-					this.iNow = 1;
+
+				if(this.iNow <= 5){
+					this.iNow++;
 					this.isUp = Math.abs(ev.pageY - this.startY) > Math.abs(ev.pageX - this.startX);
 					if(this.isUp){
 						this.target = {
@@ -239,6 +307,10 @@
 						left:e.target.offsetLeft+(ev.pageX-this.target.startX)+70+this.scroll.x+'px',
 						top:this.viewH - 180  +(ev.pageY-this.target.startY) + 'px',
 					}
+
+					//document.title = 'dragging....'
+				}else{
+					//document.title = 'dragging left right';
 				}
 			},
 			endCreate(e,build){
@@ -247,9 +319,13 @@
 					endY = ev.pageY;
 					this.iNow = 0;
 				var {stage,target,isUp} =  this;
+
+				this.target = {};
 				if(!isUp){
 					return;
 				}
+
+				//document.title = 'drag end....'
 
 				this.createBuild({
 					stage,
@@ -259,7 +335,7 @@
 					scale:build.scale
 				})
 
-				this.target = {};
+				
 			}
 		},
 	
@@ -267,7 +343,7 @@
 
 			window.s = this;
 			
-			this.initCanvas();
+			
 
 			var {obserable} = this;
 
@@ -282,10 +358,7 @@
 		
 			obserable.on('toggleMain',(data)=>{
 				this.show = data.show;
-				if(data.index){
-					this.index = data.index;
-					this.initCanvas();
-				}
+				this.initCanvas();
 			});
 
 			obserable.on('toggleTrash',data=>{
