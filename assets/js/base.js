@@ -4,9 +4,9 @@
     arrow: './assets/images/arrow.png',
     title: './assets/images/title.png',
 
-    house1: './assets/images/house1.png',
+   // house1: './assets/images/house1.png',
     house2: './assets/images/house2.png',
-    house3: './assets/images/house3.png',
+    //house3: './assets/images/house3.png',
     house4: './assets/images/house4.png',
     house5: './assets/images/house5.png',
 
@@ -46,7 +46,7 @@
     road7: './assets/images/road7.png',
 
     trash: './assets/images/trash.png',
-    subtitle: './assets/images/subtitle.png',
+    subtitle: './assets/images/subtitle1.png',
     title:'./assets/images/title.gif',
     start: './assets/images/start.jpg',
 
@@ -55,20 +55,25 @@
     grass1: './assets/images/grass1.png',
     grass2: './assets/images/grass2.png',
     grass3: './assets/images/grass3.png',
+    grass4: './assets/images/grass4.png',
+    grass5: './assets/images/grass5.png',
+
+    grass6: './assets/images/grass6.png',
+    grass7: './assets/images/grass7.png',
+    grass8: './assets/images/grass8.png',
+    grass9: './assets/images/grass9.png',
+
     index: './assets/images/index.png',
     index1: './assets/images/index1.png',
     index2: './assets/images/index.jpg',
-    cover: './assets/images/cover1.png',
+    cover: './assets/images/cover3.png',
 
-    copyright: './assets/images/copyright.jpg',
+    copyright: './assets/images/copyright3.jpg',
     photo: './assets/images/photo.png',
     housebar: './assets/images/house-bar.png',
     carbar: './assets/images/car-bar.png',
     grassbar: './assets/images/grass-bar.png',
     roadbar: './assets/images/road-bar.png',
-
-
-
 }
 
 

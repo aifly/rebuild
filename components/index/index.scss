@@ -34,21 +34,18 @@ $bgColor: #f1ebcb;
 		&.hide{
 			opacity:0;
 			z-index: -1;
-			@include transition(1.5s);
+			@include transition(.5s);
 		}
 	}
 
-	
- 	
-
  	.zmiti-entry{
  		@include pos(a);
- 		width: 200px;
+ 		width: 250px;
  		height: 70px;
 		@include br(40px);
 		background: #f7f4cb;
 		z-index: 100;
-		left: 275px;
+		left: 250px;
 		bottom: 70px;
 		text-align: center;
 		line-height: 70px;

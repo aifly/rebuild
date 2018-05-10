@@ -32,8 +32,7 @@
 			</div>
 			<transition name='btn'>
 				<div class="zmiti-share-btns" v-if='showBtns'>
-					<div v-tap='[restart]' :class="{'active':isrestart}" @touchstart='isrestart = true' @touchend='isrestart=false'>去重建</div>
-			 		<div v-tap='[share]' :class="{'active':isshare}" @touchstart='isshare = true' @touchend='isshare=false'>分享</div>
+					<div v-tap='[restart]' :class="{'active':isrestart}" @touchstart='isrestart = true' @touchend='isrestart=false'>重建</div> <div v-tap='[share]' :class="{'active':isshare}" @touchstart='isshare = true' @touchend='isshare=false'>分享</div>
 		 		</div>
 			</transition>
 			<div class="zmiti-target" v-if='target.src' :style='target.style'>
@@ -65,7 +64,7 @@
 				viewH:window.innerHeight,
 				createImg:'',
 				isUp:false,
-				index:2,
+				index:0,
 				showTrash:false,
 				isshare:false,
 				count:0,
@@ -88,12 +87,22 @@
 
 				builingList:[
 					[
-						{url:imgs.house1,scale:1},
-						{url:imgs.house2,scale:1},
-						{url:imgs.house3,scale:1},
+
+						{url:imgs.house16,scale:1},
+						{url:imgs.grass4,scale:2},
+						{url:imgs.grass5,scale:2},
+						{url:imgs.house15,scale:2},
+						
+						{url:imgs.house17,scale:1},
+						{url:imgs.house18,scale:1},
 						{url:imgs.house4,scale:1},
+						{url:imgs.grass6,scale:2},
+						{url:imgs.grass7,scale:2},
+						
+						{url:imgs.grass9,scale:2},
 						{url:imgs.house5,scale:1},
 						{url:imgs.house6,scale:1},
+						{url:imgs.grass8,scale:2},
 						{url:imgs.house7,scale:1},
 						{url:imgs.house8,scale:1},
 						{url:imgs.house9,scale:1.5},
@@ -102,10 +111,7 @@
 						{url:imgs.house12,scale:1.5},
 						{url:imgs.house13,scale:1},
 						{url:imgs.house14,scale:2},
-						{url:imgs.house15,scale:2},
-						{url:imgs.house16,scale:1},
-						{url:imgs.house17,scale:1},
-						{url:imgs.house18,scale:1},
+						{url:imgs.house2,scale:1},
 					],
 					[
 						{url:imgs.road1},
@@ -117,9 +123,10 @@
 						{url:imgs.road7},
 					],
 					[
-						{url:imgs.grass1,scale:1},
-						{url:imgs.grass2,scale:1},
-						{url:imgs.grass3,scale:1},
+						
+						{url:imgs.grass1,scale:3,left:225},
+						{url:imgs.grass2,scale:3,left:225},
+						{url:imgs.grass3,scale:3,left:225}
 					],[
 						{url:imgs.car1,scale:1,size:'auto'},
 						{url:imgs.car2,scale:1,size:'auto'},
@@ -149,7 +156,6 @@
 				copyright.y = this.viewH - 200;
 
 				
-
 				this.stage.addChild(copyright);
 
 				setTimeout(()=>{
@@ -252,22 +258,28 @@
 					index:this.index,
 					lastBuild:this.lastBuild,
 					lastRoad:this.lastRoad,
-					obserable
+					obserable,
+					
 				});
 				this.stage.count = this.stage.count || 0;
 				this.stage.count+=1;
 				if(this.stage.count>3){
 					this.bg.graphics._fill.style = '#eceac6';
 					this.start.visible = false;
-					this.stage.update();
+					//this.stage.update();
 
 				}
-
-				!this.lastBuild && this.index !== 2 && (this.lastBuild = b.image);
-				if(this.index === 1 && !this.lastRoad){
+				if(!this.lastBuild && this.index !==2 ){
+					this.lastBuild = b.image
+				}
+				
+				if(this.index === 1 && !this.lastRoad ){
 					this.lastRoad = b.image;
 				}
+
+
 				this.groups[this.index].push(b);
+				
 			},
 			beginCreate(e){
 				var ev = e.changedTouches[0];
@@ -324,16 +336,22 @@
 				if(!isUp){
 					return;
 				}
+				if(endY>this.viewH - 300){
+					return;//还没拖到界面上面去。
+				}
 
 				//document.title = 'drag end....'
 
 				this.createBuild({
 					stage,
 					url:target.src,
-					x:endX,
-					y:endY,
-					scale:build.scale
-				})
+					x:endX - (build.left||0) ,
+					y:endY-(build.left||0),
+					scale:build.scale,
+					isGrass:build.isGrass
+				});
+
+
 
 				
 			}

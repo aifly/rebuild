@@ -152,6 +152,9 @@ new Vue({
 		}, () => {
 			this.show = true;
 			this.loaded = true;
+			setTimeout(()=>{
+				document.body.style.background = '#f1ebcb';
+			},100);
 
 		})
 

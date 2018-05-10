@@ -29,7 +29,7 @@ var zmitiUtil = {
 	wxConfig: function(title, desc, url, isDebug = false) {
 		var s = this;
 
-		var img = window.baseUrl + '/assets/images/300.jpg';
+		var img = window.baseUrl + '/assets/images/301.jpg';
 
 		var appId = this.wxInfo().wxappid;
 

@@ -12,7 +12,7 @@
 			</div>
 
 			<div v-if='hideCover' v-tap='[entry]' class="zmiti-entry" :class="{'active':press}" @touchstart='press = true' @touchend='press=false'>
-				去建造
+				去建理想家园
 			</div>
 
 		</div>
@@ -56,15 +56,17 @@
 			},
 
 			entry(){
-				clearInterval(this.timer);
-				this.show = false;
-				var {obserable} = this;
-				obserable.trigger({
-					type:'toggleMain',
-					data:{
-						show:true
-					}
-				})
+				setTimeout(()=>{
+					clearInterval(this.timer);
+					this.show = false;
+					var {obserable} = this;
+					obserable.trigger({
+						type:'toggleMain',
+						data:{
+							show:true
+						}
+					})
+				},200)
 
 			}
 			

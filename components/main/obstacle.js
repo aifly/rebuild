@@ -10,6 +10,7 @@ class Build{
 		this.lastBuild = option.lastBuild;
 		this.lastRoad = option.lastRoad;
 		this.obserable = option.obserable;
+		this.isGrass= option.isGrass;
 		this.render();
 		this.bindEvent();
 
@@ -43,13 +44,12 @@ class Build{
 				}
 			break;
 			case 2:
-				if(this.lastBuild){
+				if(this.lastBuild ){
 					var obj = this.lastBuild;
 					if(this.lastRoad){
 						obj = this.lastRoad;
 					}
-					
-					this.stage.addChildAt(bitmap,this.groups[this.index].length);	
+					this.stage.addChildAt(bitmap,2);
 				}else{
 					this.stage.addChild(bitmap);	
 				}
