@@ -100,8 +100,11 @@ class Build{
             });
 
             var dis = Math.sqrt(Math.pow( image.x - trash.x ,2) + Math.pow(image.y + image.image.height - (trash.y +  trash.image.height),2));
-         
-            if(dis <= 128){
+			var d = 128;
+			if(this.index === 2){
+				d = 152;
+			}
+            if(dis <= d || (image.x<0 && image.y>window.innerHeight-300-image.image.height*3)){
             	image.visible = false;
             	stage.count -=1;
             	if(stage.count<=3){

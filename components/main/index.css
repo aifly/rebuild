@@ -287,3 +287,23 @@
   top: 5px;
   z-index: -1;
 }
+
+.zmiti-main-main-ui .zmiti-hand {
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 102;
+}
+
+.zmiti-main-main-ui .zmiti-hand img {
+  width: 200px;
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  -webkit-animation: info 1.5s infinite;
+  animation: info 1.5s infinite;
+}
+
+@-webkit-keyframes info {
+  to {
+    -webkit-transform: translate3d(200px, -400px, 0);
+  }
+}

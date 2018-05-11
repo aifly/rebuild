@@ -207,4 +207,22 @@ $color: #fffb88;
             }
         }
     }
+    .zmiti-hand {
+        background: rgba(0, 0, 0, .5);
+        z-index: 102;
+        img {
+            width: 200px;
+            @include pos(a);
+            bottom: 40px;
+            left: 10px;
+            @include animation(info 1.5s  infinite );
+            
+        }
+    }
+}
+
+@-webkit-keyframes info{
+    to{
+        -webkit-transform:translate3d(200px,-400px,0);
+    }
 }

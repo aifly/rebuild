@@ -73,7 +73,7 @@
 		},
 		mounted(){
 
-
+			
 			var {obserable} = this;
 
 			obserable.on('toggleIndex',(data)=>{
@@ -82,7 +82,7 @@
 
 			setTimeout(()=>{
 				this.hideCover = true;
-			},4000)
+			},5000)
 
 			this.timer  = setInterval(()=>{
 				if(this.index === imgs.index){
@@ -90,7 +90,7 @@
 				}else{
 					this.index = imgs.index
 				}
-			},1000)
+			},800)
 
 
 

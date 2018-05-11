@@ -24,8 +24,8 @@
 				</section>
 				<div ref='scroll' style="overflow: hidden">
 					<section :style='{width:builingList[index].length*220+"px"}'>
-						<div @touchstart='beginCreate($event)' @touchend="endCreate($event,build)" v-for='build in builingList[index]' class="zmiti-build" :key='build.url' :style="{background:' url('+build.url+') no-repeat center center',backgroundSize:build.size?build.size:'contain'}">
-							<img @touchstart='imgStart($event)' :src="build.url" style="opacity:0;width:100%;height:100%;border:1px solid red">
+						<div @touchstart='beginCreate($event)' @touchend="endCreate($event,build)" v-for='(build,i) in builingList[index]' class="zmiti-build" :key='build.url' :style="{background:' url('+build.url+') no-repeat center center',backgroundSize:build.size?build.size:'contain' ,opacity:i===0&& index ===0 && showHand?0:1}">
+							<img @touchstart='imgStart($event)'  :src="build.url" style="opacity:0;width:100%;height:100%;border:1px solid red" >
 						</div>
 					</section>
 				</div>
@@ -40,6 +40,10 @@
 			</div>
 			<div class="zmiti-mask" v-if='showMasks' @touchstart='showMasks = false'>
 				<img :src="imgs.arrow" alt="">
+			</div>
+
+			<div class="zmiti-hand lt-full" v-tap='[hideHand]' v-if='showHand'>
+				<img :src="imgs.hand" alt="" class='zmiti-hand-info'>
 			</div>
 		</div>
 	</transition>
@@ -65,6 +69,7 @@
 				createImg:'',
 				isUp:false,
 				index:0,
+				showHand:false,
 				showTrash:false,
 				isshare:false,
 				count:0,
@@ -87,7 +92,8 @@
 
 				builingList:[
 					[
-
+						{url:imgs.house4,scale:1},
+						{url:imgs.house20,scale:2},
 						{url:imgs.house16,scale:1},
 						{url:imgs.grass4,scale:2},
 						{url:imgs.grass5,scale:2},
@@ -95,13 +101,13 @@
 						
 						{url:imgs.house17,scale:1},
 						{url:imgs.house18,scale:1},
-						{url:imgs.house4,scale:1},
+						
 						{url:imgs.grass6,scale:2},
 						{url:imgs.grass7,scale:2},
 						
 						{url:imgs.grass9,scale:2},
 						{url:imgs.house5,scale:1},
-						{url:imgs.house6,scale:1},
+						
 						{url:imgs.grass8,scale:2},
 						{url:imgs.house7,scale:1},
 						{url:imgs.house8,scale:1},
@@ -111,7 +117,6 @@
 						{url:imgs.house12,scale:1.5},
 						{url:imgs.house13,scale:1},
 						{url:imgs.house14,scale:2},
-						{url:imgs.house2,scale:1},
 					],
 					[
 						{url:imgs.road1},
@@ -146,6 +151,9 @@
 		},
 		
 		methods:{
+			hideHand(){
+				this.showHand = false;
+			},
 			afterEnter(){
 				this.showBtns = true;
 			},
@@ -154,6 +162,13 @@
 				var copyright = new createjs.Bitmap(imgs.copyright);
 				copyright.x = 0;
 				copyright.y = this.viewH - 200;
+
+				var {obserable} = this;
+
+				obserable.trigger({
+					type:'playVoice',
+					data:'photo'
+				})
 
 				
 				this.stage.addChild(copyright);
@@ -164,7 +179,7 @@
 				},100)
 			},
 			share(){
-				this.showMasks = true
+				this.showMasks = true;
 			},
 			restart(){
 				setTimeout(()=>{
@@ -359,6 +374,7 @@
 	
 		mounted(){
 
+		
 			window.s = this;
 			
 			
@@ -377,12 +393,17 @@
 			obserable.on('toggleMain',(data)=>{
 				this.show = data.show;
 				this.initCanvas();
+				setTimeout(() => {
+					this.showHand = true;
+				}, 500);
+				setTimeout(()=>{
+					this.hideHand();
+				},5000)
 			});
 
 			obserable.on('toggleTrash',data=>{
 				this.trash.alpha = data;
 				this.stage.update();
-
 				return this.trash;
 			})
 

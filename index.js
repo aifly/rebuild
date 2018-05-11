@@ -50,9 +50,10 @@ new Vue({
 		<audio src='./assets/music/photo.mp3' ref='photo'></audio>
 		<audio src='./assets/music/bg.mp3' ref='audio'></audio>
 		<audio src='./assets/music/tu.mp3' ref='tu' loop></audio>
-		<Music   :obserable='obserable'></Music>
+		
 	*/
 	template: `<div>
+		<Music :obserable='obserable' ></Music>
 		<Index  v-if='show && !isShare'  :obserable='obserable'></Index>
 		<Main  v-if='show && !isShare'  :obserable='obserable'></Main>
 		
