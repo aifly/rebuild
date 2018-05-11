@@ -82,7 +82,7 @@
 
 			setTimeout(()=>{
 				this.hideCover = true;
-			},5000)
+			},7000)
 
 			this.timer  = setInterval(()=>{
 				if(this.index === imgs.index){
