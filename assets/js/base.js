@@ -66,7 +66,7 @@
     index: './assets/images/index4.png',
     index1: './assets/images/index5.png',
     index2: './assets/images/index.jpg',
-    cover: './assets/images/cover6.png',
+    cover: './assets/images/cover7.png',
 
     copyright: './assets/images/copyright4.jpg',
     photo: './assets/images/photo.png',

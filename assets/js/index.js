@@ -12060,7 +12060,7 @@
 				imgs: _libAssetsJs.imgs,
 				show: true,
 				toastMsg: '',
-				hideCover: false,
+				hideCover: true,
 				cloudIndex: 0,
 				viewW: window.innerWidth,
 				viewH: window.innerHeight,
